@@ -1,6 +1,9 @@
+import { ProviderSummary } from './app/pages/provider-summary/provider-summary';
+import { createCustomElement } from '@angular/elements';
 import { bootstrapApplication } from '@angular/platform-browser';
 import { appConfig } from './app/app.config';
-import { App } from './app/app';
 
-bootstrapApplication(App, appConfig)
-  .catch((err) => console.error(err));
+bootstrapApplication(ProviderSummary, appConfig).then(appRef => {
+  const element = createCustomElement(ProviderSummary, { injector: appRef.injector });
+  customElements.define('provider-summary', element);
+});
